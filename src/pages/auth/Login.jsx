@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { startLogin } from '@/redux/auth/thunks';
-
+import ClipLoader from "react-spinners/ClipLoader";
 
 import { LayoutPublic } from '@/layouts'
 import logo from '@/assets/react.svg';
@@ -16,6 +16,7 @@ export const Login = () => {
     const navigate = useNavigate()
 
     const [showPassword, setShowPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         mode: 'all'
@@ -25,12 +26,13 @@ export const Login = () => {
         setShowPassword(!showPassword);
     }
 
-    const onSubmit =  async(data) => {
+    const onSubmit = async (data) => {
+        setLoading(true);
         try {
             await dispatch(startLogin(data));
             navigate('/');
-        } catch (error) {
-            console.log(error)
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -70,7 +72,7 @@ export const Login = () => {
                             </div>
                         </div>
                         <div className='text-center mt-4'>
-                            <button className='btn btn-blue-dark'> Iniciar sesión</button>
+                            {loading ? <ClipLoader size={40} color={"#850068"} loading={loading} /> : <button className='btn btn-blue-dark'> Iniciar sesión</button>}
                         </div>
                         <div className='text-end mt-4'>
                             <Link to='/registro'>Crear una nueva cuenta</Link>

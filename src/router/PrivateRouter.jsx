@@ -23,8 +23,6 @@ export const PrivateRouter = ({ redirectTo = '/login' }) => {
 
     if (!user)
         return <Navigate to={redirectTo} />
-        
-
 
     return <Outlet />
 }
