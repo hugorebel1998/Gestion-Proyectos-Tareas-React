@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Navigate, Outlet } from "react-router-dom"
+import { Navigate, Outlet } from "react-router-dom";
 
-export const PublicRouter = ({ redirectTo = '/' }) => {
+export const PrivateRouter = ({ redirectTo = '/login' }) => {
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -21,8 +21,10 @@ export const PublicRouter = ({ redirectTo = '/' }) => {
         return <div>Loading...</div>;
     }
 
-    if (user)
+    if (!user)
         return <Navigate to={redirectTo} />
+        
 
-    return <Outlet /> ? <Outlet /> : <Navigate to={redirectTo} />
+
+    return <Outlet />
 }

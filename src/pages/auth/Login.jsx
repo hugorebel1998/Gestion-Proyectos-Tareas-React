@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { startLogin } from '@/redux/auth/thunks';
+
 
 import { LayoutPublic } from '@/layouts'
 import logo from '@/assets/react.svg';
@@ -8,8 +11,11 @@ import logo from '@/assets/react.svg';
 
 export const Login = () => {
 
-    const [showPassword, setShowPassword] = useState(false);
 
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const [showPassword, setShowPassword] = useState(false);
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         mode: 'all'
@@ -19,8 +25,13 @@ export const Login = () => {
         setShowPassword(!showPassword);
     }
 
-    const onSubmit = (data) => {
-        console.log({ data })
+    const onSubmit =  async(data) => {
+        try {
+            await dispatch(startLogin(data));
+            navigate('/');
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (
