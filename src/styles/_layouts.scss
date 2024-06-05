@@ -1,0 +1,40 @@
+.public-layout {
+    background-image: url('/src/assets/img/fondo.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.card-transparent {
+    background-color: rgba(255, 255, 255, 0.144);
+    border: none;
+    color: white;
+}
+
+.btn-blue-dark {
+    background-color: #850068;
+    color: white;
+    border: #850068;
+}
+
+.btn-blue-dark:hover {
+    background-color: #012f75;
+    color: white;
+    border: #003685;
+}
+
+a {
+    font-size: 13px;
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    font-size: 13px;
+    color: rgb(175, 175, 175);
+    text-decoration: none;
+}
