@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom"
-import { Login, Registro } from "../pages/auth"
+import { Login, Registro } from "@/pages/auth"
 import { PublicRouter } from "./PublicRouter"
 
 export const AppRouter = () => {
