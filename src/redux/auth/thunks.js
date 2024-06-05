@@ -15,3 +15,15 @@ export const startLogin = (payload) => {
         dispatch(isLoginAuth(response))
     }
 }
+
+export const startLogout = () => {
+    return async (dispatch) => {
+
+        const userStore = localStorage.getItem('user');
+
+        if (userStore) {
+            localStorage.removeItem('user');
+            dispatch(isLogoutAuth());
+        }
+    }
+}

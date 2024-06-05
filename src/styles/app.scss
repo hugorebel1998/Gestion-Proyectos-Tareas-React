@@ -1,1 +1,9 @@
 @import '_layouts';
+
+ body {
+    background-image: url('/src/assets/img/fondo.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 100vh;
+}

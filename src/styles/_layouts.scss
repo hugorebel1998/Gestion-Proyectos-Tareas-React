@@ -1,12 +1,13 @@
 .public-layout {
-    background-image: url('/src/assets/img/fondo.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+}
+
+.private-layout {
+    padding-top: 40px;
+    color: white;
 }
 
 .card-transparent {
@@ -30,11 +31,5 @@
 a {
     font-size: 13px;
     color: white;
-    text-decoration: none;
-}
-
-a:hover {
-    font-size: 13px;
-    color: rgb(175, 175, 175);
     text-decoration: none;
 }
