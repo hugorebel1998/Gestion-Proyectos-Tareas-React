@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom';
 
 import { LayoutPublic } from '@/layouts/LayoutPublic'
 import logo from '@/assets/react.svg';
+import { useTitle } from '@/hooks';
 
 export const Registro = () => {
+
+    useTitle('Registro');
 
     const [showPassword, setShowPassword] = useState(false);
     const [showPasswordTwo, setShowPasswordTwo] = useState(false)

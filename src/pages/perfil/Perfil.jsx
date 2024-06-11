@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { LayoutPrivate } from '@/layouts'
 import { capitalizeWord, capitalize } from '@/helpers/helpers';
-import ClipLoader from "react-spinners/ClipLoader";
 import { toast, Flip } from 'react-toastify';
 
 
@@ -10,9 +9,13 @@ import usuarioAPI from '@/services/usuario.api';
 import { Modal } from '@/components/Modal';
 import { Form as Formulario } from './Form';
 import { Spinner } from '@/components';
+import { useTitle } from '@/hooks';
 
 
 export const Perfil = () => {
+
+    useTitle('Mi perfil');
+
 
     const [openModal, setOpenModal] = useState(false);
     const [usuario, setUsuario] = useState(null);

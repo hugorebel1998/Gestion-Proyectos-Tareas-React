@@ -7,10 +7,12 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 import { LayoutPublic } from '@/layouts'
 import logo from '@/assets/react.svg';
+import { useTitle } from '@/hooks';
 
 
 export const Login = () => {
 
+    useTitle('Login');
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
