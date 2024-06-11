@@ -1,0 +1,30 @@
+.card-transparent {
+    background-color: rgba(255, 255, 255, 0.219);
+    border: none;
+    color: white;
+}
+
+.btn-blue-dark {
+    background-color: #850068;
+    color: white;
+    border: #850068;
+}
+
+.btn-blue-dark:hover {
+    background-color: #012f75;
+    color: white;
+    border: #003685;
+}
+
+.modal-transparent {
+    background-color: rgba(63, 63, 63, 0.281);
+    color: white;
+}
+
+.spinner-load {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    z-index: -1;
+}
