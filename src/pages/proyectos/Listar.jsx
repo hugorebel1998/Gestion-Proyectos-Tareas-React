@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
 import { formtDate } from '@/helpers/helpers'
 
-export const Listar = ({ data, handleEditProyecto }) => {
+export const Listar = ({ data, handleEditProyecto, handleDeleteProyecto }) => {
 
     return (
         <>
@@ -38,8 +37,15 @@ export const Listar = ({ data, handleEditProyecto }) => {
                                             <ul className="dropdown-menu">
                                                 <li>
                                                     <button onClick={() => handleEditProyecto(proyecto)} className="dropdown-item">
-                                                        <i className="fa fa-edit" />
+                                                        <i className="fa fa-edit m-1" />
                                                         Editar proyecto
+                                                    </button>
+                                                </li>
+
+                                                <li>
+                                                    <button onClick={() => handleDeleteProyecto(proyecto)} className="dropdown-item">
+                                                    <i className="fas fa-trash-alt m-1" />
+                                                        Eliminar proyecto
                                                     </button>
                                                 </li>
                                             </ul>
