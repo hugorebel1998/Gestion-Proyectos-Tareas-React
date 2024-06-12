@@ -7,6 +7,10 @@ export default {
 
     actualizar(usuario_id, payload) {
         return http.put(`usuarios/${usuario_id}`, payload);
+    },
+
+    proyectos(usuario_id) {
+        return http.get(`usuarios/${usuario_id}/proyectos`)
     }
 
 }
