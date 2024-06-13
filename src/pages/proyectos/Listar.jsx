@@ -1,4 +1,5 @@
 import { formtDate } from '@/helpers/helpers'
+import { Link } from 'react-router-dom'
 
 export const Listar = ({ data, handleEditProyecto, handleDeleteProyecto }) => {
 
@@ -43,8 +44,16 @@ export const Listar = ({ data, handleEditProyecto, handleDeleteProyecto }) => {
                                                 </li>
 
                                                 <li>
+                                                    <Link to='/tareas' style={{ textDecoration: 'none'}}>
+                                                        <button className="dropdown-item">
+                                                            <i className="fas fa-tags m-1" />
+                                                            Gestión tareas
+                                                        </button>
+                                                    </Link>
+                                                </li>
+                                                <li>
                                                     <button onClick={() => handleDeleteProyecto(proyecto)} className="dropdown-item">
-                                                    <i className="fas fa-trash-alt m-1" />
+                                                        <i className="fas fa-trash-alt m-1" />
                                                         Eliminar proyecto
                                                     </button>
                                                 </li>

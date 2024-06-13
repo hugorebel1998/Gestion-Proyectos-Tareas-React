@@ -121,7 +121,7 @@ export const Proyectos = () => {
       {isLoading ? (<Spinner loading={isLoading} title='Cargando proyectos' />)
         : (
           <>
-            <div className="h1 text-center text-white">Proyectos</div>
+            <div className="h1 text-center mt-5">Proyectos</div>
             <div className='row justify-content-center'>
               <div className='col-md-10'>
                 <div className='text-start'>
@@ -146,7 +146,7 @@ export const Proyectos = () => {
         openModal={openModal}
         closedModal={handleClosedModal}
         title="Actualizar datos proyecto"
-        children={<Formulario initialValues={proyecto || {}} onSave={handleSave} />}
+        children={<Formulario initialValues={proyecto || {}} onSave={handleSave}  closedModal={handleClosedModal} />}
       />
     </LayoutPrivate>
   )
