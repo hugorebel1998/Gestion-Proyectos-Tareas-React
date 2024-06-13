@@ -4,9 +4,9 @@ export const Listar = ({ data, handleEditProyecto, handleDeleteProyecto }) => {
 
     return (
         <>
-            <table className="table">
+            <table className="table  table-striped table-hover">
                 <thead>
-                    <tr className="text-white">
+                    <tr className='bg-blue-dark'>
                         <th scope="col">#</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Descripción</th>
@@ -20,7 +20,7 @@ export const Listar = ({ data, handleEditProyecto, handleDeleteProyecto }) => {
                 <tbody >
                     {
                         data.map((proyecto, key) =>
-                            <tr className='text-white' key={proyecto.id}>
+                            <tr key={proyecto.id}>
                                 <td>{key + 1}</td>
                                 <td>{proyecto.nombre}</td>
                                 <td>{proyecto.descripcion}</td>
@@ -57,13 +57,6 @@ export const Listar = ({ data, handleEditProyecto, handleDeleteProyecto }) => {
                     }
                 </tbody>
             </table>
-
-            {/* <Modal
-                openModal={openModal}
-                closedModal={handleClosedModal}
-                title="Actualizar datos"
-                children={<Formulario initialValues='' />}
-            /> */}
         </>
     )
 }

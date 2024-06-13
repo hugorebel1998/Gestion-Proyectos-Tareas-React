@@ -12,14 +12,14 @@ export const Navbar = () => {
     const handleLogout = () => {
         dispatch(startLogout());
 
-        navigate('/login')
+        navigate('/autenticacion')
     }
 
     return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <nav className="navbar navbar-expand-lg bg-body-tertiary bg-navbar-transparent">
             <div className="container">
                 <Link to='/'>
-                    <img src={logo} alt="" />
+                    <img src={logo} alt="Logo" width={50} />
                 </Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -27,36 +27,36 @@ export const Navbar = () => {
                 <div className="collapse navbar-collapse" id="navbarText">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <NavLink to='/' className="nav-link" style={({ isActive }) => ({ color: isActive ? "#b3018c" : "white", })}>
+                            <NavLink to='/' className="nav-link" style={({ isActive }) => ({ color: isActive ? "#b3018c" : "#512da8", })}>
                                 Inicio
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to='/perfil' className="nav-link" style={({ isActive }) => ({ color: isActive ? "#b3018c" : "white", })}>
+                            <NavLink to='/perfil' className="nav-link" style={({ isActive }) => ({ color: isActive ? "#b3018c" : "#512da8", })}>
                                 Perfil
                             </NavLink>
                         </li>
 
                         <li className="nav-item">
-                            <NavLink to='/proyectos' className="nav-link" style={({ isActive }) => ({ color: isActive ? "#b3018c" : "white", })}>
+                            <NavLink to='/proyectos' className="nav-link" style={({ isActive }) => ({ color: isActive ? "#b3018c" : "#512da8", })}>
                                 Proyectos
                             </NavLink>
                         </li>
 
                         <li className="nav-item">
-                            <NavLink to='/tareas' className="nav-link" style={({ isActive }) => ({ color: isActive ? "#b3018c" : "white", })}>
+                            <NavLink to='/tareas' className="nav-link" style={({ isActive }) => ({ color: isActive ? "#b3018c" : "#512da8", })}>
                                 Tareas
                             </NavLink>
                         </li>
 
                         <li className="nav-item">
-                            <NavLink to='/calendario' className="nav-link" style={({ isActive }) => ({ color: isActive ? "#b3018c" : "white", })}>
+                            <NavLink to='/calendario' className="nav-link" style={({ isActive }) => ({ color: isActive ? "#b3018c" : "#512da8", })}>
                                 Calendario
                             </NavLink>
                         </li>
                     </ul>
                     <span className="navbar-text text-white">
-                        <button className='btn btn-outline-light' onClick={handleLogout}>
+                        <button className='btn btn-pink' onClick={handleLogout}>
                             Cerrar sesión
                         </button>
                     </span>

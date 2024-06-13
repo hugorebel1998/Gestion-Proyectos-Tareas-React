@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
-export const PrivateRouter = ({ redirectTo = '/login' }) => {
+export const PrivateRouter = ({ redirectTo = '/autenticacion' }) => {
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
