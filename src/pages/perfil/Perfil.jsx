@@ -77,7 +77,8 @@ export const Perfil = () => {
                         <div className='h1 text-center text-white'>Mi perfil</div>
                         <div className='row justify-content-center'>
                             <div className='col-md-6'>
-                                <div className='card card-transparent'>
+                                <div className='card shadow'>
+                                    <div className='card-header bg-blue-dark'/>
                                     <div className='card-body'>
                                         <div className='row gy-2'>
                                             <div className='col-md-12'>
@@ -93,7 +94,7 @@ export const Perfil = () => {
                                             </div>
 
                                             <div className='col-md-12'>
-                                                Salir  <strong>Estatus:</strong>
+                                                <strong>Estatus:</strong>
                                                 {usuario.estatus == 'activo'
                                                     ? <span className="badge text-bg-success">{capitalize(usuario.estatus)}</span>
                                                     : <span className="badge text-bg-warning">{capitalize(usuario.estatus)}</span>

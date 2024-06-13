@@ -1,6 +1,5 @@
-.card-transparent {
-    background-color: rgba(255, 255, 255, 0.219);
-    border: none;
+.bg-blue-dark {
+    background-color: #012f75;
     color: white;
 }
 
@@ -16,9 +15,28 @@
     border: #003685;
 }
 
-.modal-transparent {
-    background-color: rgba(63, 63, 63, 0.281);
+.btn-pink {
+    background-color: #850068;
     color: white;
+    border: #850068;
+}
+
+.btn-pink:hover {
+    background-color: #6d0155;
+    color: white;
+    border: #850068;
+}
+
+.btn-blue-light {
+    background-color: #01a5be;
+    color: white;
+    border: #01a5be;
+}
+
+.btn-blue-light:hover {
+    background-color: #02879c;
+    color: white;
+    border: #02879c;
 }
 
 .spinner-load {
@@ -27,4 +45,26 @@
     align-items: center;
     min-height: 80vh;
     z-index: -1;
+}
+
+.btn-purple {
+    background-color: #512da8;
+    color: white;
+}
+
+.btn-purple:hover {
+    background-color: #42218e;
+    color: white;
+}
+
+.btn-purple-transparent {
+    background-color: transparent;
+    border-color: white;
+    padding: 7.5px 45px;
+}
+
+.btn-purple-transparent:hover {
+    background-color: transparent;
+    border-color: white;
+    padding: 7.5px 45px;
 }

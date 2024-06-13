@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
 import { formtDate } from '@/helpers/helpers'
 
-export const Listar = ({ data, handleEditProyecto }) => {
+export const Listar = ({ data, handleEditProyecto, handleDeleteProyecto }) => {
 
     return (
         <>
-            <table className="table">
+            <table className="table  table-striped table-hover">
                 <thead>
-                    <tr className="text-white">
+                    <tr className='bg-blue-dark'>
                         <th scope="col">#</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Descripción</th>
@@ -21,7 +20,7 @@ export const Listar = ({ data, handleEditProyecto }) => {
                 <tbody >
                     {
                         data.map((proyecto, key) =>
-                            <tr className='text-white' key={proyecto.id}>
+                            <tr key={proyecto.id}>
                                 <td>{key + 1}</td>
                                 <td>{proyecto.nombre}</td>
                                 <td>{proyecto.descripcion}</td>
@@ -38,8 +37,15 @@ export const Listar = ({ data, handleEditProyecto }) => {
                                             <ul className="dropdown-menu">
                                                 <li>
                                                     <button onClick={() => handleEditProyecto(proyecto)} className="dropdown-item">
-                                                        <i className="fa fa-edit" />
+                                                        <i className="fa fa-edit m-1" />
                                                         Editar proyecto
+                                                    </button>
+                                                </li>
+
+                                                <li>
+                                                    <button onClick={() => handleDeleteProyecto(proyecto)} className="dropdown-item">
+                                                    <i className="fas fa-trash-alt m-1" />
+                                                        Eliminar proyecto
                                                     </button>
                                                 </li>
                                             </ul>
@@ -51,13 +57,6 @@ export const Listar = ({ data, handleEditProyecto }) => {
                     }
                 </tbody>
             </table>
-
-            {/* <Modal
-                openModal={openModal}
-                closedModal={handleClosedModal}
-                title="Actualizar datos"
-                children={<Formulario initialValues='' />}
-            /> */}
         </>
     )
 }

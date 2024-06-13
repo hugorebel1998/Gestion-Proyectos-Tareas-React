@@ -59,7 +59,7 @@ export const Form = ({ initialValues = '', onSave }) => {
                                     <option value='cancelada'>Cancelado</option>
 
                                 </select>
-                                {errors.paterno && <span style={{ fontSize: '12px', margin: '3px' }} className="text-danger">{errors.paterno.message}</span>}
+                                {errors.estatus && <span style={{ fontSize: '12px', margin: '3px' }} className="text-danger">{errors.estatus.message}</span>}
                             </div>
 
                             <div className="col-md-6">

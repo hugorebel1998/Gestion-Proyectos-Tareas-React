@@ -3,7 +3,7 @@ export const LayoutPublic = ({ children }) => {
         <div className="public-layout">
             <div className="container">
                 <div className="row justify-content-center">
-                    <div className="col-xs-12 col-sm-10 col-md-6 col-lg-4 col-xl-4">
+                    <div className="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
                         {children}
                     </div>
                 </div>
