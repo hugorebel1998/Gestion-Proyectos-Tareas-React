@@ -9,7 +9,7 @@ export const Spinner = ({ loading, title = '' }) => {
         <div className="spinner-load">
             <ClipLoader size={60} color={"#850068"} loading={loading} />
 
-            {title && <p style={{ marginTop: '10px', color: 'white', margin: '2rem', fontSize: '13px'}}>{title}</p>}
+            {title && <p style={{ marginTop: '10px', color: '#850068', margin: '2rem', fontSize: '13px'}}>{title}</p>}
         </div>
     )
 }

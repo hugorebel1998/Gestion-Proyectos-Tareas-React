@@ -1,13 +1,27 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 
-export const Form = () => {
+export const Form = ({ initialValues = '', onSave }) => {
+
     const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm({
         mode: 'all',
     });
 
+
+    useEffect(() => {
+        if (initialValues) {
+            Object.keys(initialValues).forEach((key) => {
+                setValue(key, initialValues[key])
+            })
+        } else {
+            reset();
+        }
+    }, [initialValues])
+
+
     const onSubmit = (data) => {
-        console.log(data)
+        onSave(data);
     }
 
     return (
@@ -36,7 +50,7 @@ export const Form = () => {
                             >
                                 <option value=''>--Selecciona una opcion--</option>
                                 <option value='baja'>Baja</option>
-                                <option value='medio'>Medio</option>
+                                <option value='media'>Medio</option>
                                 <option value='alta'>Alta</option>
                             </select>
                             {errors.prioridad && <span style={{ fontSize: '12px', margin: '3px' }} className="text-danger">{errors.prioridad.message}</span>}
@@ -95,8 +109,9 @@ export const Form = () => {
                         </div>
                     </div>
                     <div className='text-end mt-4'>
+
                         <button type='submit' className='btn btn-sm btn-blue-dark m-1'>
-                            Crear tarea
+                            {initialValues.id ? 'Actualizar tarea' : 'Crear tarea'}
                             <i className="fas fa-plus m-1" />
                         </button>
                     </div>

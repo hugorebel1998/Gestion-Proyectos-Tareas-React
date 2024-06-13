@@ -44,7 +44,7 @@ export const Listar = ({ data, handleEditProyecto, handleDeleteProyecto }) => {
                                                 </li>
 
                                                 <li>
-                                                    <Link to='/tareas' style={{ textDecoration: 'none'}}>
+                                                    <Link to={`/proyecto-tareas/${proyecto.id}`} style={{ textDecoration: 'none'}}>
                                                         <button className="dropdown-item">
                                                             <i className="fas fa-tags m-1" />
                                                             Gestión tareas
