@@ -13,7 +13,7 @@ export const PagesRoutes = () => {
             <Route path='/perfil' element={<Perfil />} />
             <Route path="/proyectos" element={<Proyectos />} />
             <Route path="/proyecto-tareas/:proyectoId" element={<Tareas />} />
-            {/* <Route path="/calendario" element={<Calendario />} /> */}
+            <Route path="/calendario" element={<Calendario />} />
 
             <Route path='/*' element={<Navigate to='/' />} />
         </Routes>

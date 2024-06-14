@@ -47,13 +47,13 @@ export const Navbar = () => {
                             <NavLink to='/tareas' className="nav-link" style={({ isActive }) => ({ color: isActive ? "#b3018c" : "#512da8", })}>
                                 Tareas
                             </NavLink>
-                        </li>
+                        </li>*/}
 
                         <li className="nav-item">
                             <NavLink to='/calendario' className="nav-link" style={({ isActive }) => ({ color: isActive ? "#b3018c" : "#512da8", })}>
                                 Calendario
                             </NavLink>
-                        </li> */}
+                        </li>
                     </ul>
                     <span className="navbar-text text-white">
                         <button className='btn btn-pink' onClick={handleLogout}>
