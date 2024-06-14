@@ -1,2 +1,2 @@
 export * from './calendarLocalizer';
-export * from './helpers'
+export * from './helpers';

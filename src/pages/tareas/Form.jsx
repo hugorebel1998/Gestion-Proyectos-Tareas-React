@@ -1,28 +1,50 @@
-import { useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+import { useForm, Controller } from "react-hook-form";
+import DatePicker, { registerLocale } from "react-datepicker";
+
+
+import { es } from 'date-fns/locale/es';
+registerLocale('es', es)
 
 
 export const Form = ({ initialValues = '', onSave }) => {
 
-    const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm({
+    const { control, watch, register, handleSubmit, setValue, reset, formState: { errors } } = useForm({
         mode: 'all',
     });
+
+    const [fechaInicio, setFechaInicio] = useState(null);
+
+    const convertToDate = (value) => {
+        return typeof value == 'string' ? new Date(value) : value;
+    };
 
 
     useEffect(() => {
         if (initialValues) {
             Object.keys(initialValues).forEach((key) => {
-                setValue(key, initialValues[key])
-            })
+                if (key.includes('fecha')) {
+                    setValue(key, convertToDate(initialValues[key]));
+                } else {
+                    setValue(key, initialValues[key]);
+                }
+            });
         } else {
             reset();
         }
-    }, [initialValues])
+    }, [initialValues, setValue])
 
 
     const onSubmit = (data) => {
         onSave(data);
     }
+
+    const handleOnChange = (field, date) => {
+        field.onChange(date)
+    }
+
+    const fechaInicioWatch = watch('fecha_inicio', fechaInicio);
+
 
     return (
         <div className="row justify-content-center">
@@ -46,7 +68,7 @@ export const Form = ({ initialValues = '', onSave }) => {
                                 name="prioridad"
                                 className={`form-select form-select-sm ${errors.prioridad ? 'is-invalid' : ''}`}
                                 {...register("prioridad", { required: 'El campo prioridad es requerido.' })}
-                                defaultValue=''
+                                defaultValue={initialValues.prioridad || ''}
                             >
                                 <option value=''>--Selecciona una opcion--</option>
                                 <option value='baja'>Baja</option>
@@ -62,7 +84,7 @@ export const Form = ({ initialValues = '', onSave }) => {
                                 name="estatus"
                                 className={`form-select form-select-sm ${errors.estatus ? 'is-invalid' : ''}`}
                                 {...register("estatus", { required: 'El campo estatus es requerido.' })}
-                                defaultValue=''
+                                defaultValue={initialValues.estatus || ''}
                             >
                                 <option value=''>--Selecciona una opcion--</option>
                                 <option value='inicio'>Inicio</option>
@@ -77,22 +99,48 @@ export const Form = ({ initialValues = '', onSave }) => {
 
                         <div className="col-md-4">
                             <label className="text-label">Fecha inicio</label>
-                            <input
-                                type='date'
+                            <Controller
+                                control={control}
                                 name="fecha_inicio"
-                                className={`form-control form-control-sm ${errors.fecha_inicio ? 'is-invalid' : ''}`}
-                                {...register("fecha_inicio", { required: 'El campo fecha de inicio es requerido.' })}
+                                rules={{ required: 'El campo fecha de inicio es requerido.' }}
+                                render={({ field }) => (
+                                    <DatePicker
+                                        locale='es'
+                                        showIcon
+                                        icon="fas fa-calendar-week"
+                                        className={`form-control form-control-sm ${errors.fecha_inicio ? 'is-invalid' : ''}`}
+                                        selected={field.value}
+                                        onChange={(date) => handleOnChange(field, date)}
+                                        dateFormat='Pp'
+                                        showTimeSelect
+                                        timeCaption='Hora'
+
+                                    />
+                                )}
                             />
                             {errors.fecha_inicio && <span style={{ fontSize: '12px', margin: '3px' }} className="text-danger">{errors.fecha_inicio.message}</span>}
                         </div>
 
                         <div className="col-md-4">
                             <label className="text-label">Fecha termino</label>
-                            <input
-                                type='date'
+                            <Controller
+                                control={control}
                                 name="fecha_termino"
-                                className={`form-control form-control-sm ${errors.fecha_inicio ? 'is-invalid' : ''}`}
-                                {...register("fecha_termino", { required: 'El campo fecha de termino es requerido.' })}
+                                rules={{ required: 'El campo fecha de termino es requerido.' }}
+                                render={({ field }) => (
+                                    <DatePicker
+                                        locale='es'
+                                        showIcon
+                                        icon="fas fa-calendar-week"
+                                        className={`form-control form-control-sm ${errors.fecha_termino ? 'is-invalid' : ''}`}
+                                        minDate={fechaInicioWatch}
+                                        selected={field.value}
+                                        onChange={(date) => { field.onChange(date) }}
+                                        dateFormat='Pp'
+                                        showTimeSelect
+                                        timeCaption='Hora'
+                                    />
+                                )}
                             />
                             {errors.fecha_termino && <span style={{ fontSize: '12px', margin: '3px' }} className="text-danger">{errors.fecha_termino.message}</span>}
                         </div>
