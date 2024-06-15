@@ -21,3 +21,22 @@ export const formtDate = (text) => {
         year: 'numeric'
     });
 }
+
+
+export const getStatus = (status) => {
+
+    switch (status) {
+        case 'inicio':
+            return 'Inicio';
+        case 'en_curso':
+            return 'En curso';
+        case 'pausa':
+            return 'En pausa';
+        case 'completado':
+            return 'Completado';
+        case 'cancelada':
+            return 'Cancelado';
+        default:
+            return 'Ningun de las anteriores'
+    }
+}

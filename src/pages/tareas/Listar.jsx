@@ -1,5 +1,5 @@
 import React from 'react'
-import { formtDate } from '@/helpers/helpers'
+import { formtDate, getStatus } from '@/helpers/helpers'
 
 export const Listar = ({ data, handleEditTarea, handleDeleteTarea }) => {
     return (
@@ -23,7 +23,7 @@ export const Listar = ({ data, handleEditTarea, handleDeleteTarea }) => {
                             <td>{key + 1}</td>
                             <td>{tarea.nombre}</td>
                             <td>{tarea.descripcion}</td>
-                            <td>{tarea.estatus}</td>
+                            <td>{getStatus(tarea.estatus)}</td>
                             <td>{formtDate(tarea.fecha_inicio)}</td>
                             <td>{formtDate(tarea.fecha_termino)}</td>
                             <td>
