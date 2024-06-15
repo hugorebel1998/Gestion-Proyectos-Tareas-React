@@ -1,36 +1,30 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
+import { useTitle } from '@/hooks/useTitle';
+
 import { Calendar } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
-
 import { LayoutPrivate } from '@/layouts/LayoutPrivate';
-import { useTitle } from '@/hooks/useTitle';
 import { localizer, getMessagesCalendar } from '@/helpers';
-import { addHours } from 'date-fns';
-
-
-const events = [
-    {
-        title: 'Mi cumpleaños',
-        notes: 'Simple descripcion',
-        start: new Date(),
-        end: addHours(new Date(), 2),
-        bgColor: '#fafafa',
-        user: {
-            _id: '1234',
-            name: 'Hugo Guillermo'
-        }
-    }
-]
 
 
 export const Calendario = () => {
 
     useTitle('Calendario');
+    const { state } = useLocation();
 
 
-    const eventStyleGetter = ({ event, start, end, isSelected }) => {
-        // console.log({ event, start, end, isSelected })
+    const { tareas } = state
+    const events = tareas.map(tarea => ({
+        title: tarea.nombre,
+        start: new Date(tarea.fecha_inicio),
+        end: new Date(tarea.fecha_termino),
+        allDay: false
+    }));
+
+
+    const eventStyleGetter = () => {
 
         const style = {
             backgroundColor: '#17A589',

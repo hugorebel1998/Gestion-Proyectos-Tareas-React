@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useTitle } from '@/hooks/useTitle';
 
 import proyectosApi from '@/services/proyectos.api';
@@ -20,6 +20,7 @@ export const Tareas = () => {
   useTitle('Tareas');
 
   const { proyectoId } = useParams();
+  const navigate = useNavigate();
 
   const [openModal, setOpenModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -48,6 +49,10 @@ export const Tareas = () => {
     } finally {
       setTimeout(() => setIsLoading(false), 350);
     }
+  }
+
+  const handleCalendario = () => {
+    navigate('/calendario', { state: { tareas } });
   }
 
   const handleNuevaTarea = () => {
@@ -133,6 +138,10 @@ export const Tareas = () => {
                     <button onClick={handleNuevaTarea} className='btn btn-blue-light m-2' >
                       <i className="fas fa-plus" />
                       Nuevo
+                    </button>
+
+                    <button onClick={() => { handleCalendario() }} className='btn btn-blue-light m-2' >
+                      Calendario
                     </button>
                   </div>
                   <Listar data={tareas} handleEditTarea={handleEditTarea} handleDeleteTarea={handleDeleteTarea} />
