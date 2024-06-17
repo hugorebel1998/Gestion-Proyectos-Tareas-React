@@ -1,6 +1,5 @@
 import axios from "axios";
 import { toast, Flip } from 'react-toastify';
-import { Spinner } from '@/components';
 
 const baseURL = import.meta.env.VITE_URL_API;
 
@@ -25,12 +24,13 @@ http.interceptors.response.use(({ data }) => {
     return data;
 }, async (response) => {
 
-    const { data, status } = response.response
+
+    const { data, status, statusText } = response.response
 
     let menssage = data.error || 'Algo salio mal';
 
 
-    if (response.status === 401 &&  response.data.message == "Error autenticación") {
+    if (status === 401 && statusText == "Unauthorized") {
 
         try {
             const userStorage = localStorage.getItem('user');
@@ -41,7 +41,7 @@ http.interceptors.response.use(({ data }) => {
                 usuario_id: usuario.user.id
             }
 
-            const response = await axios.post(`${baseURL}auth/refresh-token`, payload);
+            const response = await axios.post(`${baseURL}/auth/refresh-token`, payload);
             const { data } = response
             usuario.access_token = data.access_token
             localStorage.setItem('user', JSON.stringify(usuario));
